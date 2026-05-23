@@ -75,6 +75,10 @@ return [
             'channel' => env('MAIL_LOG_CHANNEL'),
         ],
 
+        'cloudflare' => [
+            'transport' => 'cloudflare',
+        ],
+
         'array' => [
             'transport' => 'array',
         ],
