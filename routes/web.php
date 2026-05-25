@@ -16,7 +16,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('invitations/{invitation}/accept', [TeamInvitationController::class, 'accept'])->name('invitations.accept');
 });
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';
 
 Route::get('/phpinfo', function () {
     return phpinfo();
