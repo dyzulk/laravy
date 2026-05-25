@@ -1,3 +1,4 @@
+kind: wasmer.io/App.v0
 name: laravy
 app_id: da_KwGIWtMUgQPE
 owner: dyzulk
@@ -19,7 +20,6 @@ jobs:
   action:
     execute:
       command: after_deploy
-kind: wasmer.io/App.v0
 annotations:
   shipitcli.com/config:
     build_command: npm run build
@@ -31,7 +31,7 @@ annotations:
     framework: laravel
     node_version: '22'
     package_manager: npm
-    php_version: 8.4.21
+    php_version: 8.3.29
     phpix: true
     phpix_worker_threads: 4
     port: 8080

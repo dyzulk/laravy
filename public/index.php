@@ -5,6 +5,16 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+// Wasmer PHP 8.3 Polyfill for Symfony 8
+if (!function_exists('request_parse_body')) {
+    function request_parse_body(array $options = null): array {
+        return [$_POST, $_FILES];
+    }
+}
+if (!class_exists('RequestParseBodyException')) {
+    class RequestParseBodyException extends \Exception {}
+}
+
 // Determine if the application is in maintenance mode...
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
     require $maintenance;
