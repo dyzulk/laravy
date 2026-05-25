@@ -1,3 +1,4 @@
+kind: wasmer.io/App.v0
 name: laravy
 app_id: da_KwGIWtMUgQPE
 owner: dyzulk
@@ -5,11 +6,6 @@ package: .
 scaling:
   mode: single_concurrency
 jobs:
-- name: after_deploy
-  trigger: post-deployment
-  action:
-    execute:
-      command: after_deploy
 - name: queue_worker
   trigger: '* * * * *'
   action:
@@ -19,12 +15,17 @@ jobs:
       - artisan
       - queue:work
       - --stop-when-empty
+- name: after_deploy
+  trigger: post-deployment
+  action:
+    execute:
+      command: after_deploy
 annotations:
   shipitcli.com/config:
     build_command: npm run build
     commands:
-      build: composer run-script deploy && npm run build
-    composer_build_script: deploy
+      build: composer run-script post-update-cmd && npm run build
+    composer_build_script: post-update-cmd
     convert_redirects: true
     extra_dependencies: []
     framework: laravel
@@ -38,4 +39,3 @@ annotations:
     use_composer: true
   shipitcli.com/provider: laravel
   shipitcli.com/version: 0.19.8
-kind: wasmer.io/App.v0
