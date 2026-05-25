@@ -17,3 +17,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 require __DIR__.'/settings.php';
+
+Route::get('/phpinfo', function () {
+    return phpinfo();
+})->name('phpinfo');
